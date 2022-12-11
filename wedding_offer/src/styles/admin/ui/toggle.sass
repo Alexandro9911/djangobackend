@@ -1,0 +1,36 @@
+.toggle
+  width: 30px
+  cursor: pointer
+
+  &__place
+    display: flex
+    align-content: center
+    height: 20px
+    padding: 2px 2px
+    width: 35px
+    border-radius: 4px
+    border: 1px solid black
+
+  &__circle
+    margin-top: auto
+    margin-bottom: auto
+    width: 18px
+    height: 18px
+    border-radius: 4px
+    background: red
+
+
+.active
+  background: green
+  margin-left: auto
+
+.blocked
+  background: rgba(128, 128, 128, 0.63)
+  cursor: auto !important
+
+.toggle-layout
+  display: flex
+  flex-flow: row
+
+  &__text
+    margin-right: 15px

@@ -1,0 +1,106 @@
+.users-page-layout
+  display: flex
+  flex-flow: column
+  padding: 10px
+  border-radius: 7px
+  margin: 10px
+  width: 100%
+  background: rgba(128, 128, 128, 0.16)
+
+  &:not(:last-child)
+    margin-bottom: 15px
+
+  p
+    font-size: 24px
+    font-weight: bold
+
+  &__item
+    margin-top: 15px
+
+.add-user-button
+  height: 40px
+  border: 1px solid blue
+  display: flex
+  flex-flow: column
+  padding: 4px 20px
+  cursor: pointer
+  width: 300px
+  border-radius: 4px
+
+  &__text
+    margin-top: auto
+    margin-bottom: auto
+    text-align: center
+
+.users-list
+  display: flex
+  flex-flow: column
+
+  &__header
+    font-weight: bold
+    margin-top: 15px
+    margin-bottom: 8px
+
+  &__divider
+    height: 1px
+    background: black
+    margin-bottom: 15px
+
+  &__body
+    padding: 10px
+    margin-top: 10px
+    margin-bottom: 10px
+    border-radius: 7px
+    background: white
+
+.users-table
+  display: flex
+  flex-flow: column
+
+  &__item
+    background: rgba(100, 98, 98, 0.12)
+    height: 30px
+    padding: 4px 20px
+    display: flex
+    flex-flow: row
+    align-items: center
+
+    &__user-item
+      &:not(&:last-child)
+        margin-right: 10px
+
+    &__button-edit
+      margin-left: auto
+      margin-right: 0
+      border: 1px solid blue
+      border-radius: 4px
+      padding: 4px
+      font-size: 10px
+      cursor: pointer
+
+
+    &:hover
+      background: rgba(0, 52, 255, 0.21)
+
+    &:not(&:last-child)
+      margin-bottom: 10px
+
+.user-status
+  display: flex
+  flex-flow: row
+
+  &__text
+    margin-right: 5px
+
+.green
+  color: green
+
+.red
+  color: red
+
+.name-text
+  width: 200px
+
+.token-text
+  width: 170px
+  font-size: 10px

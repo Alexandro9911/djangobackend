@@ -1,0 +1,89 @@
+.create-question-card
+  height: 60px
+  width: fit-content
+  padding: 10px
+  display: flex
+  flex-flow: row
+  border-radius: 4px
+  margin: 10px
+  background: rgba(97, 218, 251, 0.24)
+  align-items: center
+
+  &__text
+    margin-right: 20px
+
+  &__button
+    height: 30px
+    border: 1px solid blue
+    border-radius: 7px
+    padding: 4px 20px
+    display: flex
+    flex-flow: row
+    justify-content: center
+
+    &__text
+      margin-top: auto
+      margin-bottom: auto
+      line-height: 16px
+
+.questions-list
+  display: flex
+  flex-flow: column
+  width: 100%
+
+  &__item
+
+    display: flex
+    flex-flow: row
+    height: 30px
+    border-radius: 7px
+    padding: 4px 20px
+
+    &:hover
+      background: rgba(0, 0, 0, 0.05)
+
+    &:not(&:last-child)
+      margin-bottom: 10px
+
+    &__number
+      width: 20px
+      font-weight: bold
+
+    &__status
+      width: 150px
+
+    &__question-name
+      width: 200px
+
+    &__button-edit
+      width: auto
+      margin-top: auto
+      margin-bottom: auto
+      border: 1px solid blue
+      height: 18px
+      padding: 4px
+      border-radius: 4px
+      font-size: 10px
+      cursor: pointer
+
+    &__button-view
+      margin-left: 25px
+      width: auto
+      margin-top: auto
+      margin-bottom: auto
+      border: 1px solid black
+      height: 18px
+      padding: 4px
+      border-radius: 4px
+      font-size: 10px
+      cursor: pointer
+
+
+
+
+
+.question-active
+  color: green
+
+.question-not-active
+  color: red
