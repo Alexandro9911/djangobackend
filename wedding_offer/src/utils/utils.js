@@ -32,3 +32,21 @@ function randomInteger(min, max) {
   let rand = min + Math.random() * (max + 1 - min);
   return Math.floor(rand);
 }
+
+export const parseList = (data) => {
+  if(data.length > 0){
+    return data.map((item) => {
+      return {
+        id: item.id,
+        identifier: item.identifier,
+        name: item.name,
+        active: item.active,
+        multiple: item.multiple,
+        title: item.question_text,
+        answers: JSON.parse(item.answer_variants)
+      }
+    })
+  } else {
+    return []
+  }
+}

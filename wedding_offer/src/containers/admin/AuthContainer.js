@@ -1,10 +1,10 @@
-import AuthLayout from "../layouts/AuthLayout";
-import AuthCard from "../components/admin/AuthCard";
+import AuthLayout from "../../layouts/admin/AuthLayout";
+import AuthCard from "../../components/admin/AuthCard";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {setAuthSuccessAction} from "../store/admin/auth/actions";
+import {setAuthSuccessAction} from "../../store/admin/auth/actions";
 import { useNavigate } from "react-router-dom";
-import {authRequest} from "../api/requests/admin/auth/authRequest";
+import {authRequest} from "../../api/requests/admin/auth/authRequest";
 
 export default function AuthContainer(){
   

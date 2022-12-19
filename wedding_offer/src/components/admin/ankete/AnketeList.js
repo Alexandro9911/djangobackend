@@ -1,8 +1,14 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {setSelectedQuestionAction} from "../../../store/admin/question/actions";
-import {questionModalEditAction, questionModalViewAction} from "../../../store/admin/modals/actions";
+import {
+  editAnketeModalAction,
+  viewAnketeModalAction
+} from "../../../store/admin/modals/actions";
 import EmptyListCard from "../emptyListCard";
+import {setCurrentAnketeAction} from "../../../store/admin/ankete/actions";
+import {fillListQuestionsAction} from "../../../store/admin/question/actions";
+import useQuestionsQuery from "../../../api/queries/admin/useQuestionsQuery";
+import {parseList} from "../../../utils/utils";
 
 export default function AnketeList(){
   
@@ -12,23 +18,38 @@ export default function AnketeList(){
   
   const dispatch = useDispatch()
   
+  const {data: { data }, isLoading, isFetching } = useQuestionsQuery()
+  
+  let loading = isLoading || isFetching
+  
+  useEffect(() => {
+    if(!loading){
+      if(data.result){
+        const list = parseList(data.result)
+        dispatch(fillListQuestionsAction(list))
+      }
+    }
+  },  [data, loading])
+  
   useEffect(() => {
     setAnketesList(listAnkete)
   }, [listAnkete])
   
   const onEditClick = (ankete) => {
-  
+    dispatch(setCurrentAnketeAction(ankete))
+    dispatch(editAnketeModalAction(true))
   }
   
-  const onViewClick = (question) => {
-  
+  const onViewClick = (ankete) => {
+    dispatch(setCurrentAnketeAction(ankete))
+    dispatch(viewAnketeModalAction(true))
   }
   
   const onTestClick = (ankete) => {
   
   }
   
-  const mapQuestions = () => {
+  const mapAnketeList = () => {
     const resultList = anketesList.map((item) => {
       return (
         <div className="questions-list__item" key={item.identifier}>
@@ -38,10 +59,10 @@ export default function AnketeList(){
           </div>
           <span className="questions-list__item__status">Статус:
             {item.active &&
-            <span className="question-active">Активна</span>
+              <span className="question-active">Активна</span>
             }
             {!item.active &&
-            <span className="question-not-active">Не Активна</span>
+              <span className="question-not-active">Не Активна</span>
             }
           </span>
           <div className="questions-list__item__button-edit" onClick={() => onEditClick(item)}>Редактировать</div>
@@ -57,7 +78,7 @@ export default function AnketeList(){
     <div>
       {anketesList.length > 0 &&
       <div className="questions-list">
-        {mapQuestions()}
+        {mapAnketeList()}
       </div>
       }
       {anketesList.length === 0 &&

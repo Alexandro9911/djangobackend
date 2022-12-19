@@ -1,4 +1,4 @@
-import '../styles/admin/auth.sass'
+import '../../styles/admin/auth.sass'
 import {useEffect, useState} from "react";
 
 export default function AuthLayout({children}){

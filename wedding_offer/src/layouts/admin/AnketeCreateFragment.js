@@ -1,11 +1,11 @@
-import '../styles/admin/anketeFragment.sass'
+import '../../styles/admin/anketeFragment.sass'
 import {useEffect, useState} from "react";
-import CreateQuestionsCard from "../components/admin/questions/CreateQuestionsCard";
-import QuestionsList from "../components/admin/questions/QuestionsList";
-import AnketeList from "../components/admin/ankete/AnketeList";
-import CreateAnketeCard from "../components/admin/ankete/CreateAnketeCard";
-import AnketeProvider from "../containers/providers/AnketeProvider";
-import QuestionsProvider from "../containers/providers/QuestionsProvider";
+import CreateQuestionsCard from "../../components/admin/questions/CreateQuestionsCard";
+import QuestionsList from "../../components/admin/questions/QuestionsList";
+import AnketeList from "../../components/admin/ankete/AnketeList";
+import CreateAnketeCard from "../../components/admin/ankete/CreateAnketeCard";
+import AnketeProvider from "../../containers/providers/AnketeProvider";
+import QuestionsProvider from "../../containers/providers/QuestionsProvider";
 
 export default function AnketeCreateFragment(){
   const [sectionOneShow, setSectionOneShow] = useState(false)
@@ -16,12 +16,18 @@ export default function AnketeCreateFragment(){
     
     if(value === 'one'){
       setSectionOneShow((prev) => !prev)
+      setSectionTwoShow(false)
+      setSectionThreeShow(false)
     }
     if(value === 'two'){
       setSectionTwoShow((prev) => !prev)
+      setSectionOneShow(false)
+      setSectionThreeShow(false)
     }
     if(value === 'three'){
       setSectionThreeShow((prev) => !prev)
+      setSectionOneShow(false)
+      setSectionTwoShow(false)
     }
   }
   

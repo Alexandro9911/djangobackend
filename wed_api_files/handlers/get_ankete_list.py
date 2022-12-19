@@ -42,8 +42,8 @@ def get_ankete_list_from_database():
     for item in result:
         arr.append({
             'id': item[0],
-            'name': item[1],
-            'identifier': item[2],
+            'name': item[2],
+            'identifier': item[1],
             'active': item[3],
             'ankete_questions': get_ankete_questions_list(item[0])
         })
@@ -54,13 +54,17 @@ def get_ankete_list_from_database():
 def get_ankete_questions_list(ankete_id):
     str_sql = """
         select
-           q.id,
-           q.name,
-           q.identifier,
-           q.active,
-           q.multiple,
-           q.questions_text,
-           q.answer_variants
+           q.id as questionId,
+           q.name as questionName,
+           q.identifier as questionIdentifier,
+           q.active as questionActive,
+           q.multiple as questionMultiple,
+           q.questions_text as questionText,
+           q.answer_variants as questionAnswerVariants,
+           ankete_questions.active as activeQuestionInAnkete,
+           ankete_questions.ankete_id as anketeId,
+           ankete_questions.identifier as questionIdentifierInAnkete,
+           ankete_questions.question_id as questionIdInAnkete
         from wedding_offer.ankete_questions as ankete_questions
             join wedding_offer.questions q on q.id = ankete_questions.question_id
         where ankete_questions.ankete_id = {0} and ankete_questions.active = true
@@ -74,15 +78,23 @@ def get_ankete_questions_list(ankete_id):
 
     arr = []
     for item in result:
-        arr.append({
-            'id': item[0],
-            'name': item[1],
-            'identifier': item[2],
-            'active': item[3],
-            'multiple': item[4],
-            'question_text': item[5],
-            'answer_variants': item[6]
-        })
+        arr.append(
+            {
+                "wrapperActive": item[7],
+                "wrapperAnketeId": item[8],
+                "wrapperIdentifier": item[9],
+                "wrapperQuestionId": item[10],
+                "question": {
+                    'id': item[0],
+                    'name': item[1],
+                    'identifier': item[2],
+                    'active': item[3],
+                    'multiple': item[4],
+                    'question_text': item[5],
+                    'answer_variants': item[6]
+                }
+            }
+        )
 
     return arr
 

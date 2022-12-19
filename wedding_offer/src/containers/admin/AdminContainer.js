@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
-import AdminLayout from "../layouts/AdminLayout";
-import AuthLayout from "../layouts/AuthLayout";
+import AdminLayout from "../../layouts/admin/AdminLayout";
+import AuthLayout from "../../layouts/admin/AuthLayout";
 import AuthContainer from "./AuthContainer";
 import {useDispatch, useSelector} from "react-redux";
-import {setAuthSuccessAction} from "../store/admin/auth/actions";
+import {setAuthSuccessAction} from "../../store/admin/auth/actions";
 
 export default function AdminContainer(){
   const [autorised, setAutorized] = useState(false)

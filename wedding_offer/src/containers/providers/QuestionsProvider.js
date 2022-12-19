@@ -2,6 +2,7 @@ import useQuestionsQuery from "../../api/queries/admin/useQuestionsQuery";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 import {fillListQuestionsAction} from "../../store/admin/question/actions";
+import {parseList} from "../../utils/utils";
 
 export default function QuestionsProvider({children}){
   
@@ -20,23 +21,6 @@ export default function QuestionsProvider({children}){
     }
   },  [data, loading])
   
-  const parseList = (data) => {
-    if(data.length > 0){
-      return data.map((item) => {
-        return {
-          id: item.id,
-          identifier: item.identifier,
-          name: item.name,
-          active: item.active,
-          multiple: item.multiple,
-          title: item.question_text,
-          answers: JSON.parse(item.answer_variants)
-        }
-      })
-    } else {
-      return []
-    }
-  }
   
   return (
     <div>{children}</div>

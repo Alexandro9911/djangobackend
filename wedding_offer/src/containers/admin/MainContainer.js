@@ -1,9 +1,9 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import OfferContainer from "./OfferContainer";
+import OfferContainer from "../offer/OfferContainer";
 import AdminContainer from "./AdminContainer";
-import AnketeCreateFragment from "../layouts/AnketeCreateFragment";
-import StatisticFragment from "../layouts/StatisticFragment";
-import UsersFragment from "../layouts/UsersFragment";
+import AnketeCreateFragment from "../../layouts/admin/AnketeCreateFragment";
+import StatisticFragment from "../../layouts/admin/StatisticFragment";
+import UsersFragment from "../../layouts/admin/UsersFragment";
 export default function MainContainer(){
   
   return (

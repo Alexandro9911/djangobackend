@@ -4,6 +4,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {getRandomIdentifier} from "../../../utils/utils";
 import ListQuestions from "./ListQuestions";
+import {
+  addAnketeToListAction,
+  applyAnketeToStoreAction, clearCurrentAnketeAction,
+  saveQuestionsChangeAction,
+  updateAnketeInListAction
+} from "../../../store/admin/ankete/actions";
+import {createAnketeModalAction, editAnketeModalAction} from "../../../store/admin/modals/actions";
+
 
 export default function AnketeForm({type}){
   
@@ -17,7 +25,7 @@ export default function AnketeForm({type}){
   const ankete_id = useSelector((state) => state.ankete.currentAnkete.id)
   const ankete_name = useSelector((state) => state.ankete.currentAnkete.name)
   const current_ankete_active = useSelector((state) => state.ankete.currentAnkete.active)
-  const current_list_questions = useSelector((state) => state.ankete.currentAnkete.list_questions)
+  const current_list_questions = useSelector((state) => state.ankete.currentAnkete.ankete_questions)
   
   const [anketeIdentifier, setAnketeIdentifier] = useState(ankete_identifier)
   const [anketeId, setAnketeId] = useState(ankete_id)
@@ -34,6 +42,7 @@ export default function AnketeForm({type}){
     setAnketeActive(current_ankete_active)
   }, [currentAnkete, ankete_identifier, ankete_id, ankete_name, current_ankete_active, current_list_questions])
   
+  
   useEffect(() => {
     if(type === 'create'){
       setAnketeIdentifier(getRandomIdentifier())
@@ -48,21 +57,37 @@ export default function AnketeForm({type}){
     setAnketeActive(value)
   }
   
-  const changeAnketeQuestions = (list) => {
-    setAnketeQuestions(list)
+  const changeAnketeQuestions = (value, newValue) => {
+    dispatch(saveQuestionsChangeAction(value,newValue))
   }
-  
-  
-  //  id: 0,
-  //  identifier: '',
-  //  active: false,
-  //  name: '',
-  //  list_questions: [],
   
   const saveAll = () => {
     console.log('save all')
+    const newAnkete = {
+      id: anketeId,
+      name: anketeName,
+      identifier: anketeIdentifier,
+      active: anketeActive,
+      ankete_questions: anketeQuestions === undefined ? [] : anketeQuestions
+    }
+    if(type === 'edit'){
+      dispatch(applyAnketeToStoreAction(newAnkete))
+      dispatch(updateAnketeInListAction())
+      
+      dispatch(editAnketeModalAction(false))
+      dispatch(clearCurrentAnketeAction())
+    }
+    if(type === 'create'){
+      console.log(newAnkete)
+      dispatch(applyAnketeToStoreAction(newAnkete))
+      dispatch(addAnketeToListAction())
+      
+      dispatch(createAnketeModalAction(false))
+      dispatch(clearCurrentAnketeAction())
+    }
+    
   }
-  
+  console.log(anketeQuestions)
   return (
     <div className="question-form">
       <div className="question-form__main-info">
@@ -101,9 +126,16 @@ export default function AnketeForm({type}){
             maxWidthRequired={true}
           />
         </div>
-        <div className="question-form__main-info__item">
-          <ListQuestions viewMode={viewMode} handler={setAnketeQuestions} values={anketeQuestions}/>
-        </div>
+        {(type === 'edit' || type === 'view') &&
+          <div className="question-form__main-info__item">
+            <ListQuestions
+              viewMode={viewMode}
+              handler={changeAnketeQuestions}
+              setValues={setAnketeQuestions}
+              values={anketeQuestions}
+            />
+          </div>
+        }
         { !viewMode &&
         <div className="question-form__main-info__item">
           <div

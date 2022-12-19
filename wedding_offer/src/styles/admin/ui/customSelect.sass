@@ -1,0 +1,50 @@
+.custom-select
+  position: relative
+
+  &__dropdown
+    margin-top: 5px
+    z-index: 100
+    position: absolute
+    width: 320px
+    height: 145px
+    background: white
+    border-radius: 4px
+    border: 1px solid black
+
+    &__layout
+      display: flex
+      flex-flow: column
+      overflow-y: auto
+      width: 100%
+
+      &__item
+        height: 25px
+        padding: 4px 20px
+
+
+        &:hover
+          background: rgba(128, 128, 128, 0.24)
+
+
+  &__input
+    background: white
+    width: 320px
+    height: 25px
+    padding: 4px 20px
+    border-radius: 4px
+    border: 1px solid black
+    cursor: pointer
+    display: flex
+    flex-flow: row
+
+    &__value
+      margin-top: auto
+      margin-bottom: auto
+
+.open
+  display: flex
+  visibility: visible
+
+.closed
+  visibility: hidden
+  display: none

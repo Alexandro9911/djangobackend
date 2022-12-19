@@ -15,14 +15,6 @@ def add_user(request):
     status_request = status.HTTP_200_OK
     msg_final = {}
 
-    user = {
-        'identifier': '',
-        'name': '',
-        'token': '',
-        'active': False,
-        'text_offer': ''
-    }
-
     if request.method == 'POST':
         data = json.loads(request.body)
 
