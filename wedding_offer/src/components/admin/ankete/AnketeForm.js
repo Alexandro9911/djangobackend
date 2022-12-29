@@ -11,6 +11,8 @@ import {
   updateAnketeInListAction
 } from "../../../store/admin/ankete/actions";
 import {createAnketeModalAction, editAnketeModalAction} from "../../../store/admin/modals/actions";
+import {updateAnkete} from "../../../api/requests/admin/ankete/updateAnkete";
+import {createAnkete} from "../../../api/requests/admin/ankete/createAnkete";
 
 
 export default function AnketeForm({type}){
@@ -74,6 +76,8 @@ export default function AnketeForm({type}){
       dispatch(applyAnketeToStoreAction(newAnkete))
       dispatch(updateAnketeInListAction())
       
+      updateAnkete(newAnkete)
+      
       dispatch(editAnketeModalAction(false))
       dispatch(clearCurrentAnketeAction())
     }
@@ -81,6 +85,8 @@ export default function AnketeForm({type}){
       console.log(newAnkete)
       dispatch(applyAnketeToStoreAction(newAnkete))
       dispatch(addAnketeToListAction())
+      
+      createAnkete(newAnkete)
       
       dispatch(createAnketeModalAction(false))
       dispatch(clearCurrentAnketeAction())

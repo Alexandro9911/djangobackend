@@ -1,7 +1,15 @@
 import '../../../styles/admin/ui/customSelect.sass'
 import {useState} from "react";
 
-export default function CustomSelect({value, handler, disabled, options}){
+export default function CustomSelect(
+  {
+    value,
+    handler,
+    disabled,
+    options,
+    placeholder = 'Выберите значение'
+  }
+){
   
   const [dropdownState, setDropdownState] = useState(false)
   
@@ -29,6 +37,10 @@ export default function CustomSelect({value, handler, disabled, options}){
     })
   }
   
+  const getText = () => {
+    return (value && value.length > 0) ? value.question.name : placeholder
+  }
+  
   const getStyle = () => {
     return dropdownState ? "custom-select__dropdown open" : "custom-select__dropdown closed"
   }
@@ -36,7 +48,7 @@ export default function CustomSelect({value, handler, disabled, options}){
   return (
     <div className="custom-select">
       <div className="custom-select__input" onClick={onInputClick}>
-        <div className="custom-select__input__value">{value.question.name}</div>
+        <div className="custom-select__input__value">{getText()}</div>
       </div>
       <div className={getStyle()}>
         <div className="custom-select__dropdown__layout">

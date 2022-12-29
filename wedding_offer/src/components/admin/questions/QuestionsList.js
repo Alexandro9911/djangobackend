@@ -1,4 +1,4 @@
-import '../../../styles/admin/questions.sass'
+import '../../../styles/admin/questions/questions.sass'
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setSelectedQuestionAction} from "../../../store/admin/question/actions";

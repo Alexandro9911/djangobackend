@@ -6,6 +6,7 @@ import AnketeList from "../../components/admin/ankete/AnketeList";
 import CreateAnketeCard from "../../components/admin/ankete/CreateAnketeCard";
 import AnketeProvider from "../../containers/providers/AnketeProvider";
 import QuestionsProvider from "../../containers/providers/QuestionsProvider";
+import Offers from "../../components/admin/offers/Offers";
 
 export default function AnketeCreateFragment(){
   const [sectionOneShow, setSectionOneShow] = useState(false)
@@ -73,7 +74,7 @@ export default function AnketeCreateFragment(){
           </div>
           {sectionThreeShow &&
           <div className="accordeon__item__body">
-            Таблица пользователей и анкет
+            <Offers/>
           </div>
           }
         </div>

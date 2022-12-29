@@ -1,4 +1,4 @@
-import '../../../styles/admin/questions.sass'
+import '../../../styles/admin/questions/questions.sass'
 import {useDispatch} from "react-redux";
 import {createQuestionModalAction} from "../../../store/admin/modals/actions";
 import {clearSelectedQuestionAction} from "../../../store/admin/question/actions";

@@ -1,4 +1,4 @@
-import '../../../styles/admin/variantAnswers.sass'
+import '../../../styles/admin/questions/variantAnswers.sass'
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import AnswerVariant from "./AnswerVariant";

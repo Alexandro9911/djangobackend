@@ -1,4 +1,4 @@
-import '../../../styles/admin/variantAnswers.sass'
+import '../../../styles/admin/questions/variantAnswers.sass'
 import StyledInput from "../ui/input";
 import {useState} from "react";
 import {useDispatch} from "react-redux";

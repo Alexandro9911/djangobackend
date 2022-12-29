@@ -1,0 +1,47 @@
+.simple-select
+  position: relative
+  width: 400px
+
+  &__input
+    cursor: pointer
+    height: 40px
+    width: 400px
+    background: #c7c7c740
+    display: flex
+    flex-flow: row
+    justify-items: center
+    justify-content: center
+    align-items: center
+    align-content: center
+    border-radius: 7px
+
+    &__value
+      padding: 4px 20px
+
+  &__dropdown
+    z-index: 100
+    position: absolute
+    width: 400px
+    background: white
+    top: 50px
+    border-radius: 7px
+    border: 1px solid #c7c7c740
+    max-height: 350px
+    overflow-y: auto
+
+    &__items
+      margin: 10px
+
+
+.option-item
+  height: 40px
+  cursor: pointer
+  border-radius: 7px
+  display: flex
+  flex-flow: row
+  align-items: center
+  align-content: center
+  padding: 5px
+
+  &:hover
+    background: #c7c7c740
