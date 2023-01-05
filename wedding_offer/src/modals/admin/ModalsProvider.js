@@ -4,6 +4,7 @@ import '../../styles/admin/modals.sass'
 import ModalQuestion from "./ModalQuestion";
 import ModalUser from "./ModalUser";
 import ModalAnkete from "./ModalAnkete";
+import ModalOffer from "./ModalOffer";
 export default function ModalsProvider({children}){
   
   const modalsData = useSelector((state) => state.adminModals)
@@ -20,6 +21,7 @@ export default function ModalsProvider({children}){
   const [anketeEdit, setAnketeEdit] = useState(false)
   const [anketeView, setAnketeView] = useState(false)
   
+  const [offerEdit, setOfferEdit] = useState(false)
   
   useEffect(() => {
     setQuestionCreate(modalsData.questionCreate)
@@ -31,6 +33,7 @@ export default function ModalsProvider({children}){
     setAnketeCreate(modalsData.anketeModalCreateState)
     setAnketeEdit(modalsData.anketeModalEditState)
     setAnketeView(modalsData.anketeModalViewState)
+    setOfferEdit(modalsData.offerModalEditState)
   }, [modalsData])
   
   const getAnketeModalType = () => {
@@ -65,9 +68,14 @@ export default function ModalsProvider({children}){
           </div>
         }
         {(anketeCreate || anketeEdit || anketeView) &&
-        <div className="modal-layout">
-          <ModalAnkete type={getAnketeModalType()} />
-        </div>
+          <div className="modal-layout">
+            <ModalAnkete type={getAnketeModalType()} />
+          </div>
+        }
+        { offerEdit &&
+          <div className="modal-layout">
+            <ModalOffer/>
+          </div>
         }
       </div>
       {children}

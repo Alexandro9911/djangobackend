@@ -10,6 +10,13 @@ export const VIEW_USER_MODAL = 'VIEW_USER_MODAL'
 export const EDIT_USER_MODAL = 'EDIT_USER_MODAL'
 export const CREATE_USER_MODAL = 'CREATE_USER_MODAL'
 
+export const EDIT_OFFER_MODAL = 'EDIT_OFFER_MODAL'
+
+export const editOfferModalAction = (action) => ({
+  type: EDIT_OFFER_MODAL,
+  payload: action
+})
+
 export const viewUserModalAction = (action) => ({
   type: VIEW_USER_MODAL,
   payload: action

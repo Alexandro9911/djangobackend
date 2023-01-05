@@ -5,6 +5,7 @@ import {questionReducer} from "./admin/question/reducer";
 import {userReducer} from "./admin/users/reducers";
 import {anketeReducer} from "./admin/ankete/reducer";
 import {userOfferReducer} from "./offer/user/reducer";
+import {offerReducer} from "./admin/offer/reducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   question: questionReducer,
   user: userReducer,
   ankete: anketeReducer,
+  offer: offerReducer,
   userOffer: userOfferReducer,
 })

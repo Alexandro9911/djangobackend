@@ -38,7 +38,11 @@ export default function SimpleSelect(
     } else {
       return options.map((item) => {
         return (
-          <div className="option-item" onClick={(e) => onSelectItem(e,item)}>{item.name}</div>
+          <div key={item.key}
+               className="option-item"
+               onClick={(e) => onSelectItem(e,item)}>
+            {item.name}
+          </div>
         )
       })
     }

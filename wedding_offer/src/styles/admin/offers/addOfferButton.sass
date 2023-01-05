@@ -12,6 +12,7 @@
 
   border: 1px solid blue
   border-radius: 7px
+  cursor: pointer
 
   &__text
     color: black
@@ -21,8 +22,31 @@
   display: flex
   flex-flow: column
 
+  p
+    margin-bottom: 10px !important
+    font-weight: normal !important
+    font-size: 14px !important
+
   &__mini-form
     margin-top: 15px
     border-radius: 7px
     border: 1px solid black
     padding: 10px 20px
+
+    &__layout-form
+      display: flex
+      flex-flow: column
+      gap: 10px
+
+    &__layout-select
+      display: flex
+      flex-flow: row
+      gap: 15px
+
+    &__button
+      height: auto
+      width: fit-content
+      padding: 4px 20px
+      border: 1px solid blue
+      border-radius: 7px
+      cursor: pointer

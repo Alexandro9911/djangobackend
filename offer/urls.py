@@ -26,6 +26,10 @@ from wed_api_files.handlers import update_question as update_questions_api
 from wed_api_files.handlers import get_ankete_list as get_ankete_list_api
 from wed_api_files.handlers import create_ankete as create_ankete_api
 from wed_api_files.handlers import update_ankete as update_ankete_api
+from wed_api_files.handlers import users_without_offers as users_without_offers_api
+from wed_api_files.handlers import get_offers as get_offers_api
+from wed_api_files.handlers import add_offer as add_offer_api
+from wed_api_files.handlers import edit_offer as edit_offer_api
 
 urlpatterns = [
     path('', index),
@@ -40,4 +44,8 @@ urlpatterns = [
     path('api/weddings_offer/admin_api/ankete_list', get_ankete_list_api.get_ankete_list),
     path('api/weddings_offer/admin_api/create_ankete', create_ankete_api.create_ankete),
     path('api/weddings_offer/admin_api/update_ankete', update_ankete_api.update_ankete),
+    path('api/weddings_offer/admin_api/users_without_offer', users_without_offers_api.users_without_offers),
+    path('api/weddings_offer/admin_api/offers_list', get_offers_api.get_offers_list),
+    path('api/weddings_offer/admin_api/add_offer', add_offer_api.add_offer),
+    path('api/weddings_offer/admin_api/edit_offer', edit_offer_api.edit_offer),
 ]
