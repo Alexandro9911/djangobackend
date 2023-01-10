@@ -1,0 +1,46 @@
+.program
+  display: flex
+  flex-flow: column
+
+  &__title
+    //margin-top: 20px
+    //margin-bottom: 50px
+    font-family: 'Lastochka'
+    font-style: normal
+    font-weight: 400
+    font-size: 80px
+    line-height: 103px
+    text-align: center
+    color: rgba(217, 186, 186, 0.7)
+
+  &__body
+    margin-top: 10px
+    display: flex
+    flex-flow: column
+    margin-left: 70px
+    margin-right: 70px
+
+    &__item
+      font-family: 'Inter'
+      font-weight: lighter
+      font-size: 24px
+      line-height: 44px
+      color: #d9d9d9
+
+      &:not(&:last-child)
+        margin-bottom: 10px
+
+.text-bold
+  font-weight: bold
+  font-size: 24px
+  line-height: 44px
+  color: #FFFFFF
+
+.text-centered
+  text-align: center
+
+
+.fixed-width
+  width: 420px
+  margin-left: auto
+  margin-right: auto

@@ -3,40 +3,37 @@ import {useSearchParams} from "react-router-dom";
 import OfferLayout from "../../layouts/offer/OfferLayout";
 import {initUserStoreAction, setSelectErrorAction} from "../../store/offer/user/actions";
 import {useDispatch} from "react-redux";
+import useAnketeQuery from "../../api/queries/admin/useAnketeQuery";
+import useUserInfoQuery from "../../api/queries/offer/useUserInfoQuery";
 
 export default function OfferContainer(){
   
   const [token, setToken] = useState('')
   
   const [searchParams, setSearchParams] = useSearchParams();
-  const [loading, setLoading] = useState(false)
   
   const dispatch = useDispatch()
+  
+  const {data: { data }, isLoading, isFetching } = useUserInfoQuery(searchParams.get('token'))
+  
+  let loading = isLoading || isFetching
   
   useEffect(() => {
     const selectedToken = searchParams.get('token')
     console.log(selectedToken)
     if(selectedToken) {
-      console.log('in set')
       setToken(searchParams.get('token'))
-      getInfo()
     } else {
       dispatch(setSelectErrorAction(true))
     }
-  })
+  }, [])
   
-  const getInfo = () => {
-    if(token){
-      console.log('need request here')
-      const userInfo = {
-        token: token,
-        id: 66,
-        name: 'Тестовый пользователь',
-        textOffer: 'Дорогой'
-      }
-      dispatch(initUserStoreAction(userInfo))
+  useEffect(() => {
+    if(!loading){
+      console.log(data.result)
+      dispatch(initUserStoreAction(data.result))
     }
-  }
+  }, [loading, data])
   
   return (
     <div>

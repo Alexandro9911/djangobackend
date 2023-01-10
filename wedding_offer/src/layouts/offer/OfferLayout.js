@@ -2,6 +2,9 @@ import '../../styles/offer/general.sass'
 import {useEffect, useState} from "react";
 import Section from "./Section";
 import OfferCard from "../../components/offer/OfferCard";
+import Program from "../../components/offer/Program";
+import DressCode from "../../components/offer/DressCode";
+import Other from "../../components/offer/Other";
 
 export default function OfferLayout(){
   
@@ -24,17 +27,21 @@ export default function OfferLayout(){
       <div className="page-layout__colored-back" style={getStyles()}>
         <div className="page-layout__body">
           <div className="page-layout__body__wrapper">
+            <div className="title">
+              <div className="title__first-letter">A</div>
+              <div className="title__second-letter">M</div>
+            </div>
             <Section>
               <OfferCard/>
             </Section>
             <Section>
-              Программа
+              <Program/>
             </Section>
             <Section>
-              Дресс код
+              <DressCode/>
             </Section>
             <Section>
-              Остальноe
+              <Other/>
             </Section>
             <Section>
               Анкета

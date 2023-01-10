@@ -31,6 +31,8 @@ from wed_api_files.handlers import get_offers as get_offers_api
 from wed_api_files.handlers import add_offer as add_offer_api
 from wed_api_files.handlers import edit_offer as edit_offer_api
 
+from wed_api_files.handlers import public_get_all_info as offer_info_api
+
 urlpatterns = [
     path('', index),
     path('admin', index),
@@ -48,4 +50,5 @@ urlpatterns = [
     path('api/weddings_offer/admin_api/offers_list', get_offers_api.get_offers_list),
     path('api/weddings_offer/admin_api/add_offer', add_offer_api.add_offer),
     path('api/weddings_offer/admin_api/edit_offer', edit_offer_api.edit_offer),
+    path('api/wedding_offer/public_offer/get_info', offer_info_api.get_all_info_offer)
 ]

@@ -38,7 +38,7 @@ export default function CustomSelect(
   }
   
   const getText = () => {
-    return (value && value.length > 0) ? value.question.name : placeholder
+    return (value && Object.keys(value).length > 0) ? value.question.name : placeholder
   }
   
   const getStyle = () => {

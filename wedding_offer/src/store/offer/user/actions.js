@@ -8,10 +8,5 @@ export const setSelectErrorAction = (value) => ({
 
 export const initUserStoreAction = (user) => ({
   type: INIT_USER_STORE,
-  payload: {
-    token: user.token,
-    id: user.id,
-    name: user.name,
-    textOffer: user.text_offer
-  }
+  payload: user
 })

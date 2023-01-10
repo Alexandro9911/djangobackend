@@ -4,10 +4,8 @@ import {
 } from "./actions";
 
 const initialState = {
-  id: -1,
-  token: '',
-  name: '',
-  offerText: '',
+  
+  userInfo: {},
   
   selectError: false
 }
@@ -15,12 +13,10 @@ const initialState = {
 export const userOfferReducer = (state = initialState, action) => {
   switch (action.type) {
     case INIT_USER_STORE: {
+      console.log(action.payload)
       return {
         ...state,
-        id: action.payload.id,
-        token: action.payload.token,
-        offerText: action.payload.offerText,
-        name: action.payload.name
+        userInfo: action.payload
       }
     }
     case SELECT_ERROR: {
