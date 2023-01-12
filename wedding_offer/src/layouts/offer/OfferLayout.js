@@ -5,6 +5,8 @@ import OfferCard from "../../components/offer/OfferCard";
 import Program from "../../components/offer/Program";
 import DressCode from "../../components/offer/DressCode";
 import Other from "../../components/offer/Other";
+import {useSelector} from "react-redux";
+import Ankete from "../../components/offer/ankete/Ankete";
 
 export default function OfferLayout(){
   
@@ -22,6 +24,8 @@ export default function OfferLayout(){
     }
   }
   
+  const selectError = useSelector((state) => state.userOffer.selectError)
+  
   return (
     <div className="page-layout" style={getStyles()}>
       <div className="page-layout__colored-back" style={getStyles()}>
@@ -31,9 +35,24 @@ export default function OfferLayout(){
               <div className="title__first-letter">A</div>
               <div className="title__second-letter">M</div>
             </div>
-            <Section>
-              <OfferCard/>
-            </Section>
+            {!selectError &&
+              <Section>
+                <OfferCard/>
+              </Section>
+            }
+            {selectError &&
+              <div>
+                <div className="offer-card__main-text">
+                  Мы приглашаем вас поучаствовать в торжественном мероприятии в честь нашей свадьбы
+                </div>
+                <div className="offer-card__main-text">
+                  Ваши Александр и Марина
+                </div>
+                <div className="offer-card__bottom-text">
+                  23 августа 2023 года
+                </div>
+              </div>
+            }
             <Section>
               <Program/>
             </Section>
@@ -43,9 +62,9 @@ export default function OfferLayout(){
             <Section>
               <Other/>
             </Section>
-            <Section>
-              Анкета
-            </Section>
+            {!selectError &&
+              <Ankete/>
+            }
           </div>
         </div>
       </div>

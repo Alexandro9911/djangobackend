@@ -2,6 +2,10 @@ import '../../styles/offer/sections/other.sass'
 
 export default function Other(){
   
+  const onClickTelephone = (e, tel) => {
+    console.log(tel)
+  }
+  
   return (
     <div className="other">
       <div className="other__title">
@@ -19,9 +23,24 @@ export default function Other(){
         <div>По всем вопросам обращаться по телефонам:</div>
       </div>
       <div className="other__telephones">
-        <div className="other__telephones__item"><span>8 (921) 638 - 12 - 24 </span> — Евгения (мама невесты)</div>
-        <div className="other__telephones__item"><span>8 (911) 224 - 43 - 36 </span> — Елена (мама жениха)</div>
-        <div className="other__telephones__item"><span>8 (911) 784 - 20 - 83</span> — Артемий</div>
+        <div className="other__telephones__item">
+          <span onClick={(e) => onClickTelephone(e, '89216381224')}>
+            8 (921) 638 - 12 - 24
+          </span>
+          &nbsp;— Евгения (мама невесты)
+        </div>
+        <div className="other__telephones__item">
+          <span onClick={(e) => onClickTelephone(e, '89112244336')}>
+            8 (911) 224 - 43 - 36
+          </span>
+          &nbsp;— Елена (мама жениха)
+        </div>
+        <div className="other__telephones__item">
+          <span  onClick={(e) => onClickTelephone(e, '89117842083')}>
+            8 (911) 784 - 20 - 83
+          </span>
+          &nbsp;— Артемий
+        </div>
       </div>
     </div>
   )

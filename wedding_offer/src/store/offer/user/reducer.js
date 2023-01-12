@@ -13,7 +13,6 @@ const initialState = {
 export const userOfferReducer = (state = initialState, action) => {
   switch (action.type) {
     case INIT_USER_STORE: {
-      console.log(action.payload)
       return {
         ...state,
         userInfo: action.payload

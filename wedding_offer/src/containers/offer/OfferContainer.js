@@ -11,7 +11,7 @@ export default function OfferContainer(){
   const [token, setToken] = useState('')
   
   const [searchParams, setSearchParams] = useSearchParams();
-  
+  const [info, setInfo] = useState({})
   const dispatch = useDispatch()
   
   const {data: { data }, isLoading, isFetching } = useUserInfoQuery(searchParams.get('token'))
@@ -20,7 +20,6 @@ export default function OfferContainer(){
   
   useEffect(() => {
     const selectedToken = searchParams.get('token')
-    console.log(selectedToken)
     if(selectedToken) {
       setToken(searchParams.get('token'))
     } else {
@@ -30,7 +29,7 @@ export default function OfferContainer(){
   
   useEffect(() => {
     if(!loading){
-      console.log(data.result)
+      setInfo(data.result)
       dispatch(initUserStoreAction(data.result))
     }
   }, [loading, data])
