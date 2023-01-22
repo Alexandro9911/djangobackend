@@ -6,3 +6,12 @@ export const initTestStoreAction = (list) => ({
   type: INIT_STORE,
   payload: list
 })
+
+export const setAnswerAction = (question, answerVariant, newState) => ({
+  type: SET_ANSWER,
+  payload: {
+    question: question,
+    answerVariant: answerVariant,
+    newState: newState
+  }
+})

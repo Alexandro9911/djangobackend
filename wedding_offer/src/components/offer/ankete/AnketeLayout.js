@@ -31,15 +31,11 @@ export default function AnketeLayout({ankete, questions, userAnswers}){
   }, [ankete, questions, userAnswers])
   
   
-  const onSetAnswerForQuestion = () => {
-  
-  }
-  
   const getQuestions = () => {
     let res = questionsList.map((item) => {
       return (
         <div key={item.question_identifier}>
-          <QuestionLayout item={item} setAnswerHandler={onSetAnswerForQuestion}/>
+          <QuestionLayout item={item}/>
         </div>
       )
     })

@@ -1,7 +1,9 @@
 import {useEffect, useState} from "react";
 import AnswersVariants from "./AnswersVariants";
+import SingleAnswersVariants from "./SingleAnswersVariants";
+import {useSelector} from "react-redux";
 
-export default function QuestionLayout({item, setAnswerHandler}){
+export default function QuestionLayout({item}){
   
   const [answers, setAnswers] = useState([])
   
@@ -11,20 +13,40 @@ export default function QuestionLayout({item, setAnswerHandler}){
     }
   }, [])
   
+  const answersFromStore = useSelector((state) => state.test.userAnswers)
+  const ankete = useSelector((state) => state.userOffer.userInfo.ankete)
+  const user = useSelector((state) => state.userOffer.userInfo.user_info)
   
-  const onClickAnswer = () => {
-  
+  const sendAnswer = (question) => {
+    const dataToSend = {
+      ankete: {
+        ankete_id: ankete.ankete_id,
+        ankete_identifier: ankete.ankete_identifier
+      },
+      user: {
+        user_id: user.user_id,
+        user_token: user.user_token
+      },
+      question: answersFromStore
+    }
+    console.log('send answer : ', dataToSend)
   }
   
   const mapAnswers = () => {
-    if(answers){
-      return answers.map((el) => {
-        return (
-          <div key={el.identifier}>
-            <AnswersVariants variant={el} onClickItem={onClickAnswer}/>
-          </div>
-        )
-      })
+    if(item.question_multiple) {
+      if (answers) {
+        return answers.map((el) => {
+          return (
+            <div key={el.identifier}>
+              <AnswersVariants question={item} variant={el} sendAnswer={sendAnswer}/>
+            </div>
+          )
+        })
+      }
+    } else {
+      if(answers) {
+        return (<SingleAnswersVariants answers={answers} question={item} sendAnswer={sendAnswer}/>)
+      }
     }
   }
   
