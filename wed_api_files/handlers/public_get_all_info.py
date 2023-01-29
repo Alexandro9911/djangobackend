@@ -70,7 +70,8 @@ def get_main_str_request(token):
         usr.id as user_id,
         usr.name as user_name,
         usr.text_offer as user_text_offer,
-        usr.identifier as user_identifier
+        usr.identifier as user_identifier,
+        offer.afterpaty as afterpaty
     from wedding_offer.offer as offer
         join wedding_offer."user" as usr on offer.user_id = usr.id
         join wedding_offer.ankete as ankete on offer.ankete_id = ankete.id
@@ -126,6 +127,25 @@ def get_questions_list_from_database(ankete_id):
     return final_arr
 
 
+def get_user_answers(user_id, ankete_id):
+    sql = """
+    select u_a.values from wedding_offer.user_answers as u_a
+        where u_a.ankete_id = {0} and u_a.user_id = {1} and u_a.active = true;
+    """.format(
+        ankete_id,
+        user_id
+    )
+
+    db_connection = database_config.get_connection()
+    cursor = db_connection.cursor()
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    db_connection.close()
+    if len(result) > 0:
+        return result[0][0]
+    else:
+        return ''
+
 def get_info_from_database(token):
     str_request = get_main_str_request(token)
 
@@ -149,10 +169,12 @@ def get_info_from_database(token):
             'user_id': result[0][9],
             'user_name': result[0][10],
             'user_text_offer': result[0][11],
-            'user_identifier': result[0][12]
+            'user_identifier': result[0][12],
+            'afterpaty': result[0][13]
         }
 
         questions_array = get_questions_list_from_database(data_offer['ankete_id'])
+        answers_str = get_user_answers(data_offer['ankete_id'], data_offer['user_id'])
 
         final_info = {
             'user_info': {
@@ -167,6 +189,7 @@ def get_info_from_database(token):
                 'offer_id': data_offer['offer_id'],
                 'offer_identifier': data_offer['offer_identifier'],
                 'offer_active': data_offer['offer_active'],
+                'afterpaty': data_offer['afterpaty']
             },
             'ankete': {
                 'ankete_active': data_offer['ankete_active'],
@@ -175,9 +198,7 @@ def get_info_from_database(token):
                 'ankete_name': data_offer['ankete_name'],
 
                 'questions': questions_array,
-                'user_answers': {
-
-                }
+                'user_answers': answers_str
             }
         }
 

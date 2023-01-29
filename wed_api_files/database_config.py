@@ -1,7 +1,7 @@
 import psycopg2
 import socket
 
-HOST = '192.168.0.108'
+HOST = '127.0.0.1'
 DBNAME = 'wedding_project'
 USER = 'postgres'
 PASSWORD = 'postgres'

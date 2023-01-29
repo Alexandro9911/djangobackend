@@ -10,15 +10,19 @@ import {editOfferRequest} from "../../../api/requests/admin/offer/editOffer";
 export default function OfferForm(){
   
   const currentOffer = useSelector((state) => state.offer.currentOffer)
-  
   const [offerActiveToggle, setOfferActiveToggle] = useState(currentOffer.offerActive)
   const [optionsAnkete, setOptionsAnkete] = useState([])
   const [selectedAnkete, setSelectedAnkete] = useState(null)
+  const [afterpaty, setAfterPaty] = useState(currentOffer.afterpaty)
   
   const dispatch = useDispatch()
   
   const onToggleClick = (value) => {
     setOfferActiveToggle(value)
+  }
+  
+  const onToggleClickAfterpaty = () => {
+    setAfterPaty((prev) => !prev)
   }
   
   const anketeListFromStore = useSelector((state) => state.ankete.anketeList)
@@ -37,7 +41,8 @@ export default function OfferForm(){
       anketeIdentifier: newAnkete[0].identifier,
       anketeActive: newAnkete[0].active,
       anketeId: newAnkete[0].id,
-      offerActive: offerActiveToggle
+      offerActive: offerActiveToggle,
+      afterpaty: afterpaty
     }
     dispatch(modifyOfferInListAction(modifyedItem))
     dispatch(editOfferModalAction(false))
@@ -85,6 +90,11 @@ export default function OfferForm(){
         onSelectHandler={setSelectedAnkete}
         options={optionsAnkete}
         disabled={false}
+      />
+      <Toggle
+        value={afterpaty}
+        label={'Предложить остаться после банкета'}
+        handler={onToggleClickAfterpaty}
       />
       <div className="form-offer__button-save" onClick={onSaveClick}>
         Сохранить

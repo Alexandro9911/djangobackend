@@ -1,5 +1,8 @@
 import '../../styles/offer/sections/program.sass'
+import {useSelector} from "react-redux";
 export default function Program(){
+  
+  const afterpaty = useSelector((state) => state.userOffer.userInfo.offer_info.afterpaty)
   
   return (
     <div className="program">
@@ -23,6 +26,13 @@ export default function Program(){
         </div>
         <div className="program__body__item">16:50 - Встреча молодоженов</div>
         <div className="program__body__item">17:00 - Начало праздничного банкета</div>
+        <div className="program__body__item">23:00 - Окончание праздничного банкета</div>
+        {afterpaty &&
+          <>
+            <div className="program__body__item">c 23:00 - перемещение в коттедж. </div>
+            <div className="program__body__item">24.08.2023 в 14:00 - выезд из коттеджа</div>
+          </>
+          }
       </div>
     </div>
   )

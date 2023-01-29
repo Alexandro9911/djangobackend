@@ -7,6 +7,7 @@ import useUsersWithoutOfferQuery from "../../../api/queries/admin/useUsersWithou
 import {getRandomIdentifier} from "../../../utils/utils";
 import {addOfferRequest} from "../../../api/requests/admin/offer/addOffer";
 import {addOfferToListAction} from "../../../store/admin/offer/actions";
+import Toggle from "../ui/toggle";
 
 export default function AddUserToOffersList(){
   
@@ -19,6 +20,7 @@ export default function AddUserToOffersList(){
   const [optionsAnkete, setOptionsAnkete] = useState([])
   const [selectedUser, setSelectedUser] = useState(null)
   const [selectedAnkete, setSelectedAnkete] = useState(null)
+  const [afterpaty,setAfterpaty] = useState(false)
   
   const anketeListFromStore = useSelector((state) => state.ankete.anketeList)
   
@@ -70,6 +72,10 @@ export default function AddUserToOffersList(){
     setSelectedAnkete(value)
   }
   
+  const onToggleClick = () => {
+    setAfterpaty((prev) => !prev)
+  }
+  
   const onSaveClick = () => {
     const data = {
       offerId: -1,
@@ -83,7 +89,8 @@ export default function AddUserToOffersList(){
       anketeIdentifier: selectedAnkete.value.identifier,
       anketeId: selectedAnkete.value.id,
       anketeName: selectedAnkete.value.name,
-      userToken: selectedUser.value.token
+      userToken: selectedUser.value.token,
+      afterpaty: afterpaty
     }
     
     addOfferRequest(data)
@@ -91,6 +98,7 @@ export default function AddUserToOffersList(){
     hideDropdown()
     
   }
+  
   
   return (
     <div className="add-offer-layout">
@@ -117,7 +125,13 @@ export default function AddUserToOffersList(){
                 onSelectHandler={onSelectItemAnkete}
                 placeholder={'Опрос в приглашении'}
               />
+              
             </div>
+            <Toggle
+              value={afterpaty}
+              label={'Предложить остаться после банкета'}
+              handler={onToggleClick}
+            />
             <div className="add-offer-layout__mini-form__button" onClick={onSaveClick}>Применить</div>
           </div>
         </div>

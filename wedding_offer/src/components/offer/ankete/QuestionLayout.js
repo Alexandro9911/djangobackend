@@ -2,34 +2,44 @@ import {useEffect, useState} from "react";
 import AnswersVariants from "./AnswersVariants";
 import SingleAnswersVariants from "./SingleAnswersVariants";
 import {useSelector} from "react-redux";
+import {sendAnswersRequest} from "../../../api/requests/offer/sendAnswers";
 
 export default function QuestionLayout({item}){
   
   const [answers, setAnswers] = useState([])
-  
-  useEffect(() => {
-    if(item) {
-      setAnswers( typeof item.answer_variants === "object" ? item.answer_variants : JSON.parse(item.answer_variants))
-    }
-  }, [])
+  const [prevAnswers, setPrevAnswers] = useState([])
   
   const answersFromStore = useSelector((state) => state.test.userAnswers)
   const ankete = useSelector((state) => state.userOffer.userInfo.ankete)
   const user = useSelector((state) => state.userOffer.userInfo.user_info)
+  const prevAnswersJson = useSelector((state) => state.userOffer.userInfo.ankete.user_answers)
   
-  const sendAnswer = (question) => {
-    const dataToSend = {
-      ankete: {
-        ankete_id: ankete.ankete_id,
-        ankete_identifier: ankete.ankete_identifier
-      },
-      user: {
-        user_id: user.user_id,
-        user_token: user.user_token
-      },
-      question: answersFromStore
+  useEffect(() => {
+    if(item) {
+      if(prevAnswersJson !== '') {
+        setPrevAnswers(JSON.parse(prevAnswersJson).filter((quest) => quest.question_id === item.question_id)[0].answer_variants)
+      } else {
+        setPrevAnswers([])
+      }
+      setAnswers( typeof item.answer_variants === "object" ? item.answer_variants : JSON.parse(item.answer_variants))
     }
-    console.log('send answer : ', dataToSend)
+  }, [])
+  
+  const sendAnswer = async () => {
+    setTimeout(() => {
+      const dataToSend = {
+        ankete: {
+          ankete_id: ankete.ankete_id,
+          ankete_identifier: ankete.ankete_identifier
+        },
+        user: {
+          user_id: user.user_id,
+          user_token: user.user_token
+        },
+        question: JSON.stringify(answersFromStore)
+      }
+      sendAnswersRequest(dataToSend)
+    }, 1000)
   }
   
   const mapAnswers = () => {
@@ -38,14 +48,26 @@ export default function QuestionLayout({item}){
         return answers.map((el) => {
           return (
             <div key={el.identifier}>
-              <AnswersVariants question={item} variant={el} sendAnswer={sendAnswer}/>
+              <AnswersVariants
+                prevAnswers={prevAnswers}
+                question={item}
+                variant={el}
+                sendAnswer={sendAnswer}
+              />
             </div>
           )
         })
       }
     } else {
       if(answers) {
-        return (<SingleAnswersVariants answers={answers} question={item} sendAnswer={sendAnswer}/>)
+        return (
+          <SingleAnswersVariants
+            prevAnswers={prevAnswers}
+            answers={answers}
+            question={item}
+            sendAnswer={sendAnswer}
+          />
+        )
       }
     }
   }

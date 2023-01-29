@@ -52,7 +52,8 @@ def get_offer_list_from_database():
             'anketeIdentifier': item[8],
             'anketeId': item[9],
             'anketeName': item[10],
-            'userToken': item[11]
+            'userToken': item[11],
+            'afterpaty': item[12]
         })
 
     return {'result': arr, "result_type": 'success'}
@@ -72,7 +73,8 @@ def get_offer_str_request():
             ankete.identifier as ankete_identifier,
             ankete.id as ankete_id,
             ankete.name as ankete_name,
-            usr.token as user_token
+            usr.token as user_token,
+            offer.afterpaty as afterpaty
         from wedding_offer.offer as offer
             join wedding_offer."user" as usr on usr.id = offer.user_id
             join wedding_offer.ankete as ankete on ankete.id = offer.ankete_id

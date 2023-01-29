@@ -24,6 +24,7 @@ def edit_offer(request):
             data['offer']['offerId'],
             data['offer']['offerActive'],
             data['offer']['anketeId'],
+            data['offer']['afterpaty']
         )
         status_request = status.HTTP_200_OK
         msg_final = res
@@ -39,8 +40,8 @@ def create_response(info, stat):
     return Response(info, status=stat, content_type=api_config.CONTENT_TYPE, headers=api_config.HEADERS)
 
 
-def edit_offer_in_list(offer_id, offer_active, offer_ankete):
-    str_request = edit_offer_str_request(offer_id, offer_active, offer_ankete)
+def edit_offer_in_list(offer_id, offer_active, offer_ankete, afterpaty_flag):
+    str_request = edit_offer_str_request(offer_id, offer_active, offer_ankete, afterpaty_flag)
 
     db_connection = database_config.get_connection()
     cursor = db_connection.cursor()
@@ -51,13 +52,14 @@ def edit_offer_in_list(offer_id, offer_active, offer_ankete):
     return {'result': 'success', "result_type": 'success'}
 
 
-def edit_offer_str_request(offer_id, offer_active, offer_ankete):
+def edit_offer_str_request(offer_id, offer_active, offer_ankete,afterpaty):
     str_sql = """
-        update wedding_offer.offer as offer set active = {0}, ankete_id = {1}
-        where offer.id = {2}
+        update wedding_offer.offer as offer set active = {0}, ankete_id = {1}, afterpaty = {2}
+        where offer.id = {3}
     """.format(
         offer_active,
         offer_ankete,
+        afterpaty,
         offer_id
     )
     return str_sql

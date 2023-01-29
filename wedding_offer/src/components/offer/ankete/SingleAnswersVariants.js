@@ -3,19 +3,18 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setAnswerAction} from "../../../store/offer/test/actions";
 
-export default function SingleAnswersVariants({answers, question, sendAnswer}){
-  
-  
+export default function SingleAnswersVariants({ prevAnswers, answers, question, sendAnswer}){
   
   const actualQuestionsState = useSelector((state) => state.test.userAnswers)
   const currQuestion = actualQuestionsState.filter((q) => q.question_identifier  === question.question_identifier)
   
   const [currAnswers, setCurrAnswers] = useState(currQuestion[0].answer_variants)
-  
+  const [ignorePrev, setIgnorePrev] = useState(false)
   const dispatch = useDispatch()
   
+  
   const onClickHandler = (e, selectedVariant) => {
-    console.log(currAnswers)
+    setIgnorePrev(true)
     let newAnswArray = currAnswers.map((variant) => {
       if(selectedVariant.identifier === variant.identifier){
         return {
@@ -32,11 +31,16 @@ export default function SingleAnswersVariants({answers, question, sendAnswer}){
     
     setCurrAnswers(newAnswArray)
     dispatch(setAnswerAction(question, selectedVariant, !selectedVariant.checked))
+    sendAnswer()
   }
   
   
   const getClassName = (identifier) => {
-    const checked = currAnswers?.filter((item) => item.identifier === identifier)[0].checked
+    let prevCheck = false
+    if(prevAnswers.length > 0) {
+      prevCheck =  prevAnswers.filter((item) => item.identifier === identifier)[0]?.checked
+    }
+    const checked = currAnswers?.filter((item) => item.identifier === identifier)[0].checked || (!ignorePrev && prevCheck)
     if(checked)
     return checked ? 'selected' : ''
   }

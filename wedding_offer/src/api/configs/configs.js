@@ -1,4 +1,4 @@
-const HOST = 'http://192.168.0.108'
+const HOST = 'http://localhost'
 const PORT = ':8000'
 const URL_ADMIN = '/api/weddings_offer/admin_api/'
 const URL_OFFER = '/api/wedding_offer/public_offer/'

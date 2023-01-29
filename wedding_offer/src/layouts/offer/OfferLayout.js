@@ -31,37 +31,37 @@ export default function OfferLayout(){
       <div className="page-layout__colored-back" style={getStyles()}>
         <div className="page-layout__body">
           <div className="page-layout__body__wrapper">
-            {/*<div className="title">*/}
-            {/*  <div className="title__first-letter">A</div>*/}
-            {/*  <div className="title__second-letter">M</div>*/}
-            {/*</div>*/}
-            {/*{!selectError &&*/}
-            {/*  <Section>*/}
-            {/*    <OfferCard/>*/}
-            {/*  </Section>*/}
-            {/*}*/}
-            {/*{selectError &&*/}
-            {/*  <div>*/}
-            {/*    <div className="offer-card__main-text">*/}
-            {/*      Мы приглашаем вас поучаствовать в торжественном мероприятии в честь нашей свадьбы*/}
-            {/*    </div>*/}
-            {/*    <div className="offer-card__main-text">*/}
-            {/*      Ваши Александр и Марина*/}
-            {/*    </div>*/}
-            {/*    <div className="offer-card__bottom-text">*/}
-            {/*      23 августа 2023 года*/}
-            {/*    </div>*/}
-            {/*  </div>*/}
-            {/*}*/}
-            {/*<Section>*/}
-            {/*  <Program/>*/}
-            {/*</Section>*/}
-            {/*<Section>*/}
-            {/*  <DressCode/>*/}
-            {/*</Section>*/}
-            {/*<Section>*/}
-            {/*  <Other/>*/}
-            {/*</Section>*/}
+            <div className="title">
+              <div className="title__first-letter">A</div>
+              <div className="title__second-letter">M</div>
+            </div>
+            {!selectError &&
+              <Section>
+                <OfferCard/>
+              </Section>
+            }
+            {selectError &&
+              <div>
+                <div className="offer-card__main-text">
+                  Мы приглашаем вас поучаствовать в торжественном мероприятии в честь нашей свадьбы
+                </div>
+                <div className="offer-card__main-text">
+                  Ваши Александр и Марина
+                </div>
+                <div className="offer-card__bottom-text">
+                  23 августа 2023 года
+                </div>
+              </div>
+            }
+            <Section>
+              <Program/>
+            </Section>
+            <Section>
+              <DressCode/>
+            </Section>
+            <Section>
+              <Other/>
+            </Section>
             {!selectError &&
               <Ankete/>
             }

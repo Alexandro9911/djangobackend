@@ -25,7 +25,8 @@ def add_offer(request):
             data['offer']['userIdentifier'],
             data['offer']['anketeId'],
             data['offer']['anketeIdentifier'],
-            data['offer']['identifier']
+            data['offer']['identifier'],
+            data['offer']['afterpaty']
         )
         status_request = status.HTTP_200_OK
         msg_final = res
@@ -41,8 +42,8 @@ def create_response(info, stat):
     return Response(info, status=stat, content_type=api_config.CONTENT_TYPE, headers=api_config.HEADERS)
 
 
-def add_user_to_list(user_id, user_identifier, ankete_id, ankete_identifier, identifier):
-    str_request = add_user_str_request(user_id, user_identifier, ankete_id, ankete_identifier, identifier)
+def add_user_to_list(user_id, user_identifier, ankete_id, ankete_identifier, identifier, afterpaty):
+    str_request = add_user_str_request(user_id, user_identifier, ankete_id, ankete_identifier, identifier, afterpaty)
 
     db_connection = database_config.get_connection()
     cursor = db_connection.cursor()
@@ -53,21 +54,23 @@ def add_user_to_list(user_id, user_identifier, ankete_id, ankete_identifier, ide
     return {'result': 'success', "result_type": 'success'}
 
 
-def add_user_str_request(user_id, user_identifier, ankete_id, ankete_identifier, identifier):
+def add_user_str_request(user_id, user_identifier, ankete_id, ankete_identifier, identifier, afterpaty):
     str_sql = """
         insert into wedding_offer.offer
-            (user_id, ankete_id, identifier, active)    
+            (user_id, ankete_id, identifier, active, afterpaty)    
         values
         (
         {0},
         {1},
         \'{2}\',
-        {3}
+        {3},
+        {4}
         )
     """.format(
         user_id,
         ankete_id,
         str(identifier),
-        True
+        True,
+        afterpaty
     )
     return str_sql

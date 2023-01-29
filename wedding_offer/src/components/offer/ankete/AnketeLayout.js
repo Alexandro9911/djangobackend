@@ -11,12 +11,15 @@ export default function AnketeLayout({ankete, questions, userAnswers}){
   
   const dispatch = useDispatch()
   
+  const prevAnswers = userAnswers === '' ? [] : JSON.parse(userAnswers)
+  
   useEffect(() => {
+    if(prevAnswers.length === 0) {
       let questCopy = questions
       let newArrQuest = questCopy.map((item) => {
     
         let newItem = item
-        const oldAnswers = typeof item.answer_variants === "object" ? item.answer_variants :JSON.parse(item.answer_variants)
+        const oldAnswers = typeof item.answer_variants === "object" ? item.answer_variants : JSON.parse(item.answer_variants)
     
         newItem.answer_variants = oldAnswers.map((answer) => {
           let newAnswer = answer
@@ -27,6 +30,10 @@ export default function AnketeLayout({ankete, questions, userAnswers}){
       })
       dispatch(initTestStoreAction(newArrQuest))
       setQuestionsList(newArrQuest)
+    } else {
+      dispatch(initTestStoreAction(prevAnswers))
+      setQuestionsList(prevAnswers)
+    }
     
   }, [ankete, questions, userAnswers])
   
