@@ -1,0 +1,111 @@
+.statistic-fragment
+  padding: 10px
+  display: flex
+  flex-flow: column
+  width: 100%
+
+  p
+    font-size: 24px
+    font-weight: bold
+
+
+.statistic-table
+  display: block
+  margin-top: 20px
+
+  &__table
+    display: flex
+    flex-flow: column
+    &__header
+      background-color: rgba(53, 36, 255, 0.42)
+      padding: 10px
+
+      &__table-name
+        color: #FFFFFF
+        font-size: 20px
+
+    &__list
+      padding: 10px
+      background: rgba(0, 0, 0, 0.1)
+      display: flex
+      flex-flow: column
+
+.table-item
+  padding: 5px
+  background: #FFFFFF
+
+  &__item-layout
+    display: flex
+    flex-flow: row
+
+    &__user-name
+      font-weight: 400
+      width: 300px
+
+    &__ankete-name
+      width: 300px
+
+    &__button-view
+      cursor: pointer
+      width: auto
+      margin-left: auto
+      margin-right: 0
+      font-size: 14px
+      border: 1px solid green
+      border-radius: 4px
+      padding: 4px
+
+  &:not(&:first-child)
+    margin-top: 8px
+
+  &:hover
+    background-color: rgba(53, 36, 255, 0.17)
+
+
+.statistic-view
+  display: flex
+  flex-flow: column
+
+  &__title
+    font-weight: 600
+    font-size: 16px
+    margin-bottom: 15px
+
+
+  &__body
+    display: flex
+    flex-flow: column
+
+.item-result
+  display: block
+
+  &__layout
+    display: flex
+    flex-flow: column
+
+    &__question-name
+      font-weight: 600
+
+
+    &__question-text
+      margin-bottom: 10px
+
+    &__answers
+      display: flex
+      flex-flow: row
+      flex-wrap: wrap
+      gap: 5px
+
+      &__variant
+        width: fit-content
+        padding: 4px 8px
+        border-radius: 10px
+        background: rgba(0, 0, 255, 0.15)
+
+
+
+  &:not(&:first-child)
+    margin-top: 15px
+
+
+

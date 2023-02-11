@@ -12,6 +12,13 @@ export const CREATE_USER_MODAL = 'CREATE_USER_MODAL'
 
 export const EDIT_OFFER_MODAL = 'EDIT_OFFER_MODAL'
 
+export const VIEW_ANSWERS_MODAL = 'VIEW_ANSWERS_MODAL'
+
+export const viewAnswersViewModalAction = (action) => ({
+  type: VIEW_ANSWERS_MODAL,
+  payload: action
+})
+
 export const editOfferModalAction = (action) => ({
   type: EDIT_OFFER_MODAL,
   payload: action

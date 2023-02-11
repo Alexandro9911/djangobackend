@@ -6,7 +6,6 @@ import {initTestStoreAction} from "../../../store/offer/test/actions";
 
 export default function AnketeLayout({ankete, questions, userAnswers}){
   
-  const [newUserAnswers, setNewUserAnswers] = useState([])
   const [questionsList, setQuestionsList] = useState([])
   
   const dispatch = useDispatch()
@@ -36,7 +35,6 @@ export default function AnketeLayout({ankete, questions, userAnswers}){
     }
     
   }, [ankete, questions, userAnswers])
-  
   
   const getQuestions = () => {
     let res = questionsList.map((item) => {

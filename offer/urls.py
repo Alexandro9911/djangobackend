@@ -30,6 +30,7 @@ from wed_api_files.handlers import users_without_offers as users_without_offers_
 from wed_api_files.handlers import get_offers as get_offers_api
 from wed_api_files.handlers import add_offer as add_offer_api
 from wed_api_files.handlers import edit_offer as edit_offer_api
+from wed_api_files.handlers import get_statistic as get_statistic_api
 
 from wed_api_files.handlers import public_get_all_info as offer_info_api
 from wed_api_files.handlers import set_answer as set_answer_api
@@ -51,7 +52,7 @@ urlpatterns = [
     path('api/weddings_offer/admin_api/offers_list', get_offers_api.get_offers_list),
     path('api/weddings_offer/admin_api/add_offer', add_offer_api.add_offer),
     path('api/weddings_offer/admin_api/edit_offer', edit_offer_api.edit_offer),
+    path('api/weddings_offer/admin_api/get_statistic', get_statistic_api.get_statistic),
     path('api/wedding_offer/public_offer/get_info', offer_info_api.get_all_info_offer),
     path('api/wedding_offer/public_offer/set_answers', set_answer_api.set_user_answer),
-
 ]

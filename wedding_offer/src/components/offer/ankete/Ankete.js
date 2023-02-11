@@ -1,4 +1,3 @@
-import Section from "../../../layouts/offer/Section";
 import {useSelector} from "react-redux";
 import AnketeLayout from "./AnketeLayout";
 import '../../../styles/offer/ankete/ankete.sass'
@@ -7,7 +6,6 @@ export default function Ankete(){
   const ankete = useSelector((state) => state.userOffer.userInfo?.ankete)
   const questions = useSelector((state) => state.userOffer.userInfo?.ankete?.questions)
   const userAnswers = useSelector((state) => state.userOffer.userInfo?.ankete?.user_answers)
-  
   
   return (
     <>

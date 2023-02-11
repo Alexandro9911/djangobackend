@@ -3,7 +3,7 @@ import '../../styles/offer/sections/other.sass'
 export default function Other(){
   
   const onClickTelephone = (e, tel) => {
-    console.log(tel)
+    
   }
   
   return (

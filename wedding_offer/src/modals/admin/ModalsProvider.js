@@ -5,6 +5,7 @@ import ModalQuestion from "./ModalQuestion";
 import ModalUser from "./ModalUser";
 import ModalAnkete from "./ModalAnkete";
 import ModalOffer from "./ModalOffer";
+import ModalAnswerView from "./ModalStatistic";
 export default function ModalsProvider({children}){
   
   const modalsData = useSelector((state) => state.adminModals)
@@ -23,6 +24,8 @@ export default function ModalsProvider({children}){
   
   const [offerEdit, setOfferEdit] = useState(false)
   
+  const [answersView, setAnswersView] = useState(false)
+  
   useEffect(() => {
     setQuestionCreate(modalsData.questionCreate)
     setQuestionEdit(modalsData.questionModalEditState)
@@ -34,6 +37,7 @@ export default function ModalsProvider({children}){
     setAnketeEdit(modalsData.anketeModalEditState)
     setAnketeView(modalsData.anketeModalViewState)
     setOfferEdit(modalsData.offerModalEditState)
+    setAnswersView(modalsData.viewModalAnswersView)
   }, [modalsData])
   
   const getAnketeModalType = () => {
@@ -75,6 +79,11 @@ export default function ModalsProvider({children}){
         { offerEdit &&
           <div className="modal-layout">
             <ModalOffer/>
+          </div>
+        }
+        { answersView &&
+          <div className="modal-layout">
+            <ModalAnswerView/>
           </div>
         }
       </div>

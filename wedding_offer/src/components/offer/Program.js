@@ -2,7 +2,7 @@ import '../../styles/offer/sections/program.sass'
 import {useSelector} from "react-redux";
 export default function Program(){
   
-  const afterpaty = useSelector((state) => state.userOffer.userInfo.offer_info.afterpaty)
+  const afterpaty = useSelector((state) => state.userOffer?.userInfo?.offer_info?.afterpaty)
   
   return (
     <div className="program">

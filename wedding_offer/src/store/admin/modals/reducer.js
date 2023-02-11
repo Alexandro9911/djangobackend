@@ -11,7 +11,9 @@ import {
   EDIT_USER_MODAL,
   VIEW_USER_MODAL,
   
-  EDIT_OFFER_MODAL
+  EDIT_OFFER_MODAL,
+  
+  VIEW_ANSWERS_MODAL
 } from "./actions";
 
 const initialState = {
@@ -27,11 +29,20 @@ const initialState = {
   userModalEditState: false,
   userModalCreateState: false,
   
-  offerModalEditState: false
+  offerModalEditState: false,
+  
+  viewModalAnswersView: false
 }
 
 export const modalsAdminReducer = (state = initialState, action) => {
   switch (action.type) {
+    
+    case VIEW_ANSWERS_MODAL: {
+      return {
+        ...state,
+        viewModalAnswersView: action.payload
+      }
+    }
     
     case EDIT_OFFER_MODAL: {
       return {
