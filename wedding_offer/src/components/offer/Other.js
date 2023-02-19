@@ -2,10 +2,10 @@ import '../../styles/offer/sections/other.sass'
 
 export default function Other(){
   
-  const onClickTelephone = (e, tel) => {
-    
-  }
   
+  const onClickTelephone = (e, tel) => {
+  
+  }
   return (
     <div className="other">
       <div className="other__title">

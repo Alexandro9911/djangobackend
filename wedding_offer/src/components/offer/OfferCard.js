@@ -20,7 +20,7 @@ export default function OfferCard(){
           {getText()}
         </div>
         <div className="offer-card__main-text">
-          Мы приглашаем вас поучаствовать в торжественном мероприятии в честь нашей свадьбы
+          Мы приглашаем вас на торжественное мероприятие в честь нашей свадьбы
         </div>
         <div className="offer-card__main-text">
           Ваши Александр и Марина

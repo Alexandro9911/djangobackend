@@ -3,8 +3,8 @@ import {useSearchParams} from "react-router-dom";
 import OfferLayout from "../../layouts/offer/OfferLayout";
 import {initUserStoreAction, setSelectErrorAction} from "../../store/offer/user/actions";
 import {useDispatch} from "react-redux";
-import useAnketeQuery from "../../api/queries/admin/useAnketeQuery";
 import useUserInfoQuery from "../../api/queries/offer/useUserInfoQuery";
+import Loader from "../../components/offer/Loader";
 
 export default function OfferContainer(){
   
@@ -18,11 +18,16 @@ export default function OfferContainer(){
   
   let loading = isLoading || isFetching
   
+  const [setupCompleted, setSetupCompleted] = useState(false)
+  const [show,setShow] = useState(false)
+  const [wasErrorDueSelection, setWasErrorDueSelection] = useState(false)
+  
   useEffect(() => {
     const selectedToken = searchParams.get('token')
     if(selectedToken) {
       setToken(searchParams.get('token'))
     } else {
+      setWasErrorDueSelection(true)
       dispatch(setSelectErrorAction(true))
     }
   }, [])
@@ -31,15 +36,31 @@ export default function OfferContainer(){
     if(!loading){
       setInfo(data.result)
       dispatch(initUserStoreAction(data.result))
+      waitTillSetup()
+      setShow(setupCompleted && !loading && !wasErrorDueSelection)
     }
-  }, [loading, data])
+  }, [loading, data, setupCompleted, wasErrorDueSelection])
+  
+  useEffect(() => {
+    if(info && info !== 'not found') {
+      setWasErrorDueSelection(false)
+    } else {
+      setWasErrorDueSelection(true)
+    }
+  }, [info])
+  
+  const waitTillSetup = () => {
+    setTimeout(() => {
+      setSetupCompleted(true)
+    }, 1500)
+  }
   
   return (
     <div>
-      {loading &&
-        <div>loader</div>
+      {!show &&
+        <Loader/>
       }
-      {!loading &&
+      {show &&
         <OfferLayout/>
       }
     </div>

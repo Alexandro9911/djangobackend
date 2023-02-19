@@ -18,10 +18,10 @@ export default function DressCode(){
           <div className="dresscode__color-section__colors__item women-4"/>
         </div>
         <div className="dresscode__color-section__colors">
-          <div className="dresscode__color-section__colors__item women-1"/>
-          <div className="dresscode__color-section__colors__item women-2"/>
-          {/*<div className="dresscode__color-section__colors__item women-3"/>*/}
-          {/*<div className="dresscode__color-section__colors__item women-4"/>*/}
+          <div className="dresscode__color-section__colors__item women-5"/>
+          <div className="dresscode__color-section__colors__item women-6"/>
+          <div className="dresscode__color-section__colors__item women-7"/>
+          <div className="dresscode__color-section__colors__item women-8"/>
         </div>
       </div>
       <div className="dresscode__color-section">
@@ -31,6 +31,10 @@ export default function DressCode(){
           <div className="dresscode__color-section__colors__item man-2"/>
           <div className="dresscode__color-section__colors__item man-3"/>
           <div className="dresscode__color-section__colors__item man-4"/>
+        </div>
+        <div className="dresscode__color-section__colors">
+          <div className="dresscode__color-section__colors__item man-5"/>
+          <div className="dresscode__color-section__colors__item man-6"/>
         </div>
       </div>
       <div className="dresscode__text margined">

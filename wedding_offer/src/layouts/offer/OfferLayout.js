@@ -7,6 +7,7 @@ import DressCode from "../../components/offer/DressCode";
 import Other from "../../components/offer/Other";
 import {useSelector} from "react-redux";
 import Ankete from "../../components/offer/ankete/Ankete";
+import CopyPopUp from "../../components/offer/CopyPopUp";
 
 export default function OfferLayout(){
   
@@ -19,16 +20,16 @@ export default function OfferLayout(){
   
   const getStyles = () => {
     return {
-      minHeight: height,
-      maxHeight: height
+      minHeight: '100vh',
+      maxHeight: '100vh'
     }
   }
   
   const selectError = useSelector((state) => state.userOffer.selectError)
   
   return (
-    <div className="page-layout" style={getStyles()}>
-      <div className="page-layout__colored-back" style={getStyles()}>
+    <div className="page-layout">
+      <div className="page-layout__colored-back">
         <div className="page-layout__body">
           <div className="page-layout__body__wrapper">
             <div className="title">

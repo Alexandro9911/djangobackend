@@ -31,7 +31,8 @@ CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = [
     u'http://localhost:3000',
-    u'http://127.0.0.1'
+    u'http://127.0.0.1',
+    u'http://192.168.0.108'
 
 ]
 CORS_ALLOW_METHODS = [
