@@ -12,7 +12,6 @@
     text-align: center
     color: rgba(217, 186, 186, 0.7)
 
-
   &__text
     margin-left: auto
     margin-right: auto
@@ -44,15 +43,16 @@
       margin-left: auto
       margin-right: auto
 
+      &:not(&:first-child)
+        margin-top: 32px
+
       &__item
         width: 180px
         height: 180px
         border: 3px solid rgba(217, 186, 186, 0.7)
 
-
         &:not(&:last-child)
           margin-right: 64px
-
 
 .margined
   margin-top: 52px
@@ -80,3 +80,82 @@
 
 .man-4
   background: #281D1D
+
+@media screen and (max-width: 1279px)
+  .dresscode
+    &__title
+      margin-bottom: 20px
+      font-size: 70px
+      line-height: 84px
+
+    &__text
+      width: 650px
+      font-size: 21px
+      line-height: 40px
+      color: #d9d9d9
+
+    &__color-section
+      &__title
+        margin-top: 32px
+        margin-bottom: 32px
+
+      &__colors
+
+        &:not(&:first-child)
+          margin-top: 32px
+
+        &__item
+          width: 120px
+          height: 120px
+          border: 3px solid rgba(217, 186, 186, 0.7)
+
+          &:not(&:last-child)
+            margin-right: 30px
+
+@media screen and (max-width: 769px)
+  .margined
+    margin-top: 30px
+  .dresscode
+    &__title
+      font-weight: 400
+      font-size: 45px
+      line-height: 50px
+
+    &__text
+      width: 100%
+      font-size: 18px
+      line-height: 24px
+      color: #d9d9d9
+
+    &__color-section
+      &__title
+        font-size: 20px
+        line-height: 30px
+        margin-top: 15px
+        margin-bottom: 15px
+
+      &__colors
+
+        &:not(&:first-child)
+          margin-top: 15px
+
+        &__item
+          width: 65px
+          height: 65px
+          border: 3px solid rgba(217, 186, 186, 0.7)
+
+          &:not(&:last-child)
+            margin-right: 15px
+
+
+@media screen and (max-width: 350px)
+  .dresscode
+    &__color-section
+      &__colors
+        &__item
+          width: 55px
+          height: 55px
+          border: 3px solid rgba(217, 186, 186, 0.7)
+
+          &:not(&:last-child)
+            margin-right: 15px

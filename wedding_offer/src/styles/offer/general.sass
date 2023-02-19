@@ -22,7 +22,6 @@
   &:not(:last-child)
     margin-bottom: 70px
 
-
 .title
   position: relative
   margin-top: 20px
@@ -52,20 +51,68 @@
     text-align: center
     color: white
 
-  &__image
-
-
 @media screen and (max-width: 1279px)
   .page-layout
     &__body
       &__wrapper
         margin: 20px 10%
 
-
+  .section
+    &:not(:last-child)
+      margin-bottom: 45px
 
 @media screen and (max-width: 769px)
+  .page-layout
+    &__body
+      &__wrapper
+        margin: 16px
 
+  .section
+    padding: unset
 
+    &:not(:last-child)
+      margin-bottom: 30px
 
+  .title
+    margin-top: 10px
+    margin-bottom: 16px
+    height: 70px
 
-@media screen and (max-width: 320px)
+    &__first-letter
+      left: calc(45%)
+      font-size: 40px
+      line-height: 45px
+
+    &__second-letter
+      left: calc(48%)
+      top: 20px
+      font-size: 35px
+      line-height: 45px
+
+@media screen and (max-width: 550px)
+  .page-layout
+    &__body
+      &__wrapper
+        margin: 16px
+
+  .section
+    padding: unset
+
+    &:not(:last-child)
+      margin-bottom: 30px
+
+  .title
+    margin-top: 10px
+    margin-bottom: 16px
+    height: 70px
+
+    &__first-letter
+      left: calc(45%)
+      font-size: 40px
+      line-height: 45px
+
+    &__second-letter
+      left: calc(49%)
+      top: 20px
+      font-size: 35px
+      line-height: 45px

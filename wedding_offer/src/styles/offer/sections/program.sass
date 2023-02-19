@@ -3,8 +3,6 @@
   flex-flow: column
 
   &__title
-    //margin-top: 20px
-    //margin-bottom: 50px
     font-family: 'Lastochka'
     font-style: normal
     font-weight: 400
@@ -39,8 +37,62 @@
 .text-centered
   text-align: center
 
-
 .fixed-width
   width: 420px
   margin-left: auto
   margin-right: auto
+
+@media screen and (max-width: 1279px)
+  .program
+    &__title
+      font-weight: 400
+      font-size: 70px
+      line-height: 80px
+
+    &__body
+      &__item
+        font-size: 18px
+        line-height: 24px
+
+        &:not(&:last-child)
+          margin-bottom: 10px
+
+  .text-bold
+    font-weight: bold
+    font-size: 18px
+    line-height: 24px
+    color: #FFFFFF
+
+  .fixed-width
+    width: 420px
+    margin-left: auto
+    margin-right: auto
+
+@media screen and (max-width: 769px)
+  .program
+    &__title
+      font-weight: 400
+      font-size: 45px
+      line-height: 50px
+
+    &__body
+      margin-left: unset
+      margin-right: unset
+
+      &__item
+        font-size: 16px
+        line-height: 24px
+
+        &:not(&:last-child)
+          margin-bottom: 10px
+
+  .text-bold
+    font-weight: bold
+    font-size: 16px
+    line-height: 24px
+    color: #FFFFFF
+
+  .fixed-width
+    width: 100%
+    margin-left: auto
+    margin-right: auto

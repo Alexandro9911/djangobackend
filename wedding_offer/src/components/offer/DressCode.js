@@ -17,6 +17,12 @@ export default function DressCode(){
           <div className="dresscode__color-section__colors__item women-3"/>
           <div className="dresscode__color-section__colors__item women-4"/>
         </div>
+        <div className="dresscode__color-section__colors">
+          <div className="dresscode__color-section__colors__item women-1"/>
+          <div className="dresscode__color-section__colors__item women-2"/>
+          {/*<div className="dresscode__color-section__colors__item women-3"/>*/}
+          {/*<div className="dresscode__color-section__colors__item women-4"/>*/}
+        </div>
       </div>
       <div className="dresscode__color-section">
         <div className="dresscode__color-section__title">Мужчины</div>

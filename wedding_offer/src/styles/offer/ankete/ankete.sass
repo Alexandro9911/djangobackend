@@ -1,4 +1,3 @@
-
 .offer-ankete-layout
   background: rgba(0, 0, 0, 0.21)
   padding: 30px
@@ -22,11 +21,9 @@
       &:not(&:last-child)
         margin-bottom: 15px
 
-
 .questions-list-ankete
   display: flex
   flex-flow: column
-
 
 .question
   display: flex
@@ -47,8 +44,6 @@
     display: flex
     flex-flow: column
 
-
-
 .answer-variant
   display: flex
   flex-flow: row
@@ -61,15 +56,15 @@
   &:not(&:last-child)
     margin-bottom: 10px
 
-
   &__button
     height: 30px
     width: 30px
+    min-width: 30px
+    min-height: 30px
     margin-right: 10px
     margin-top: auto
     margin-bottom: auto
     border: 1px solid rgba(217, 186, 186, 0.7)
-
 
   &__label
     font-family: 'Inter'
@@ -81,11 +76,141 @@
     margin-bottom: 15px
     margin-top: 15px
 
-
 .selected
   position: relative
   top: 3px
   left: 3px
   width: 24px
   height: 24px
+  min-height: 24px
+  min-width: 24px
   background: rgba(217, 186, 186, 0.7)
+
+
+@media screen and (max-width: 1279px)
+  .offer-ankete-layout
+    padding: 20px
+
+    &__header
+      margin-bottom: 32px
+
+      p
+        font-size: 20px
+        line-height: 40px
+
+        &:not(&:last-child)
+          margin-bottom: 12px
+
+  .questions-list-ankete
+    display: flex
+    flex-flow: column
+
+  .question
+    display: flex
+    flex-flow: column
+    margin-top: 8px
+    margin-bottom: 15px
+
+    &__question-name
+      font-size: 20px
+      line-height: 40px
+      color: #d9d9d9
+      max-width: 977px
+      margin-bottom: 15px
+
+    &__question-answers
+      display: flex
+      flex-flow: column
+
+  .answer-variant
+    display: flex
+    flex-flow: row
+    margin-left: 8px
+    cursor: pointer
+
+    &:hover
+      background: rgba(45, 45, 45, 0.34)
+
+    &:not(&:last-child)
+      margin-bottom: 10px
+
+    &__button
+      height: 30px
+      width: 30px
+      margin-right: 10px
+
+    &__label
+      font-size: 18px
+      line-height: 20px
+      margin-bottom: 10px
+      margin-top: 10px
+
+@media screen and (max-width: 1279px)
+  .offer-ankete-layout
+    padding: 5px
+
+    &__header
+      margin-bottom: 25px
+
+      p
+        font-size: 18px
+        line-height: 30px
+
+        &:not(&:last-child)
+          margin-bottom: 12px
+
+  .questions-list-ankete
+    display: flex
+    flex-flow: column
+
+  .question
+    display: flex
+    flex-flow: column
+    margin-top: 8px
+    margin-bottom: 15px
+
+    &__question-name
+      font-size: 18px
+      line-height: 30px
+      max-width: unset
+      width: 100%
+      margin-bottom: 15px
+
+    &__question-answers
+      display: flex
+      flex-flow: column
+
+  .answer-variant
+    display: flex
+    flex-flow: row
+    margin-left: 8px
+    cursor: pointer
+
+    &:hover
+      background: rgba(45, 45, 45, 0.34)
+
+    &:not(&:last-child)
+      margin-bottom: 10px
+
+    &__button
+      height: 24px
+      width: 24px
+      min-width: 24px
+      min-height: 24px
+      margin-right: 10px
+
+    &__label
+      font-size: 16px
+      line-height: 20px
+      margin-bottom: 10px
+      margin-top: 10px
+
+  .selected
+    position: relative
+    top: 2.5px
+    left: 2.5px
+    width: 18.8px
+    height: 18.5px
+    min-height: 18.5px
+    min-width: 18.5px
+    background: rgba(217, 186, 186, 0.7)

@@ -43,3 +43,45 @@
   margin-right: auto
   margin-left: auto
   text-align: center
+
+@media screen and (max-width: 1279px)
+  .other
+    &__title
+      font-size: 70px
+      line-height: 84px
+      margin-bottom: 20px
+
+    &__text
+      font-size: 20px
+      line-height: 40px
+
+    &__telephones
+      &__item
+        font-size: 20px
+
+        &:not(&:last-child)
+          margin-bottom: 5px
+
+  .margin-lg
+    margin-bottom: 50px
+
+
+@media screen and (max-width: 769px)
+  .other
+    &__title
+      font-size: 45px
+      line-height: 50px
+
+    &__text
+      font-size: 18px
+      line-height: 24px
+
+    &__telephones
+      &__item
+        font-size: 16px
+
+        &:not(&:last-child)
+          margin-bottom: 5px
+
+  .margin-lg
+    margin-bottom: 30px
