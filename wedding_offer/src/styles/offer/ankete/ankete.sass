@@ -214,3 +214,38 @@
     min-height: 18.5px
     min-width: 18.5px
     background: rgba(217, 186, 186, 0.7)
+
+img.rot
+  animation: 2s linear 0s normal none infinite running rot
+  -webkit-animation: 2s linear 0s normal none infinite running rot
+  width: 20px
+
+@keyframes rot
+  0%
+    transform: rotate(0deg)
+
+  100%
+    transform: rotate(360deg)
+
+
+@-webkit-keyframes rot
+  0%
+    transform: rotate(0deg)
+
+  100%
+    transform: rotate(360deg)
+
+
+
+.button-save
+  padding: 6px 20px
+  border: 1px solid rgba(217, 186, 186, 0.7)
+  color: #FFFFFF
+  font-family: 'Inter'
+  font-weight: lighter
+  font-size: 16px
+  text-align: center
+  width: 120px
+  height: 20px
+  margin: 20px auto 10px
+  cursor: pointer

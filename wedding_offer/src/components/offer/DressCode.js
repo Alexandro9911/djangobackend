@@ -1,13 +1,23 @@
 import '../../styles/offer/sections/dresscode.sass'
+import classNames from "classnames";
+import Browser from "../../utils/Browser";
 
 export default function DressCode(){
   
+  const composeClasses = () => {
+    return classNames({
+        'dresscode__title': true,
+        'iphone-version': true
+      }
+    )
+  }
+  
   return (
     <div className="dresscode">
-      <div className="dresscode__title">Дресс код:</div>
+      <div className={composeClasses()}>Дресс код:</div>
       <div className="dresscode__text">
         Дорогие гости, нам очень важно, чтобы вы присутствовали на нашем празднике,
-        и будем признательны если вы поддержите общую цветовую концепцию праздника:
+        и будем признательны если вы поддержите примерную цветовую концепцию праздника:
       </div>
       <div className="dresscode__color-section">
         <div className="dresscode__color-section__title">Девушки</div>

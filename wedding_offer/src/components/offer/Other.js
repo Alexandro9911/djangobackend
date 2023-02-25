@@ -1,4 +1,6 @@
 import '../../styles/offer/sections/other.sass'
+import classNames from "classnames";
+import Browser from "../../utils/Browser";
 
 export default function Other(){
   
@@ -6,9 +8,18 @@ export default function Other(){
   const onClickTelephone = (e, tel) => {
   
   }
+  
+  const composeClasses = () => {
+    return classNames({
+        'other__title': true,
+        'iphone-version': true
+      }
+    )
+  }
+  
   return (
     <div className="other">
-      <div className="other__title">
+      <div className={composeClasses()}>
         Остальные детали
       </div>
       <div className="other__text centered margin-md">

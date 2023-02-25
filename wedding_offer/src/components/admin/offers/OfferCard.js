@@ -12,7 +12,7 @@ export default function OfferCard({item}){
   const dispatch = useDispatch()
   
   const getComputedLink = () => {
-    return getLinkWithHost() + ':3000/?token=' +  item.userToken
+    return 'http://alexandr-and-marina-wedding.ru:8000/?token=' +  item.userToken
   }
   
   const onClickChange = () => {

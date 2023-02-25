@@ -174,7 +174,7 @@ def get_info_from_database(token):
         }
 
         questions_array = get_questions_list_from_database(data_offer['ankete_id'])
-        answers_str = get_user_answers(data_offer['ankete_id'], data_offer['user_id'])
+        answers_str = get_user_answers(data_offer['user_id'], data_offer['ankete_id'])
 
         final_info = {
             'user_info': {

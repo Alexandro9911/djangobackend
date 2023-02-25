@@ -3,10 +3,12 @@ import QuestionLayout from "./QuestionLayout";
 import '../../../styles/offer/ankete/ankete.sass'
 import {useDispatch} from "react-redux";
 import {initTestStoreAction} from "../../../store/offer/test/actions";
+import IconLoader from '../../../assets/loader-small.png'
 
 export default function AnketeLayout({ankete, questions, userAnswers}){
   
   const [questionsList, setQuestionsList] = useState([])
+  const [buttonLoading, setButtonLoading] = useState(false)
   
   const dispatch = useDispatch()
   
@@ -47,6 +49,13 @@ export default function AnketeLayout({ankete, questions, userAnswers}){
     return res
   }
   
+  const onClickButton = () => {
+    setButtonLoading(true)
+    setTimeout(() => {
+      setButtonLoading(false)
+    }, 1500)
+  }
+  
   return (
     <>
       {questionsList.length > 0 &&
@@ -54,6 +63,14 @@ export default function AnketeLayout({ankete, questions, userAnswers}){
         {getQuestions()}
       </div>
       }
+      <div className="button-save" onClick={onClickButton}>
+        {!buttonLoading &&
+          <>Сохранить</>
+        }
+        {buttonLoading && 
+          <img className="rot" src={IconLoader} alt={'wait...'}/>
+        }
+      </div>
     </>
   )
 }

@@ -1,12 +1,23 @@
 import '../../styles/offer/sections/program.sass'
 import {useSelector} from "react-redux";
+import classNames from "classnames";
+import Browser from "../../utils/Browser";
 export default function Program(){
   
   const afterpaty = useSelector((state) => state.userOffer?.userInfo?.offer_info?.afterpaty)
   
+  const composeClasses = () => {
+    return classNames({
+        'program__title': true,
+        'iphone-version': true
+      }
+    )
+  }
+  
+  
   return (
     <div className="program">
-      <div className="program__title">Программа дня:</div>
+      <div className={composeClasses()}>Программа дня:</div>
       <div className="program__body">
         <div className="program__body__item text-bold">
           Сбор гостей с 14:00 до 14:30

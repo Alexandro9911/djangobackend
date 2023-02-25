@@ -8,6 +8,8 @@ import Other from "../../components/offer/Other";
 import {useSelector} from "react-redux";
 import Ankete from "../../components/offer/ankete/Ankete";
 import CopyPopUp from "../../components/offer/CopyPopUp";
+import classNames from "classnames";
+import Browser from "../../utils/Browser";
 
 export default function OfferLayout(){
   
@@ -27,14 +29,30 @@ export default function OfferLayout(){
   
   const selectError = useSelector((state) => state.userOffer.selectError)
   
+  const composeFirstLetterClasses = () => {
+    return classNames({
+        'title__first-letter': true,
+        'iphone-version': true
+      }
+    )
+  }
+  
+  const composeSecondLetterClasses = () => {
+    return classNames({
+      'title__second-letter': true,
+      'iphone-version': true
+      }
+    )
+  }
+  
   return (
     <div className="page-layout">
       <div className="page-layout__colored-back">
         <div className="page-layout__body">
           <div className="page-layout__body__wrapper">
             <div className="title">
-              <div className="title__first-letter">A</div>
-              <div className="title__second-letter">M</div>
+              <div className={composeFirstLetterClasses()}>A</div>
+              <div className={composeSecondLetterClasses()}>M</div>
             </div>
             {!selectError &&
               <Section>
